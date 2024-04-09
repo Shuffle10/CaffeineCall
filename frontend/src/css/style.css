@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    overflow-y: hidden;
+}
+
+#root{
+}
+
+.navbar{
+    height: 5vh;
+    display: flex;
+    /* border: 2px solid red; */
+    padding: 20px 170px;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-items{
+    width: 50%;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+}
+
+.logo-container{
+    font-size: 28px;
+}
+
+.nav-list-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-weight: 600;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+}
+
+.child-container{
+    width: 50%;
+    height: 95vh;
+}
+
+.image-container{
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-size: cover;
+}
+
+
+#myForm{
+    border: 0.3px solid gray;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 50px;
+    gap: 25px;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-submit{
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color:#028dff;
+    color: white;
+    font-size: 16px;
+}
+
+#slider{
+    width: 100%;
+}
