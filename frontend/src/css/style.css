@@ -56,51 +56,5 @@
 }
 
 
-#myForm{
-    border: 0.3px solid gray;
-    border-radius: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    padding: 50px;
-    gap: 25px;
-}
 
-.form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-}
 
-.form-group {
-    margin-bottom: 20px;
-}
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-submit{
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-    background-color:#028dff;
-    color: white;
-    font-size: 16px;
-}
-
-.form-submit:hover{
-    opacity: 0.7;
-}
-
-.disabled-button {
-    opacity: 0.7;
-    cursor: not-allowed;
-    background-color: rgb(224, 218, 218);
-  }
-
-#slider{
-    width: 100%;
-}

@@ -1,0 +1,45 @@
+.my-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 45px;
+  }
+  
+  .my-table th, .my-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .my-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .status {
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .status.idle {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+  
+  .status.brewing {
+    background-color: #ffc107;
+    color: #333;
+  }
+
+  .status.timer {
+    background-color: #178fdf;
+    color: #fdfdfd;
+  }
+  
+  .status.ready {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .status.pending {
+    background-color: #17a2b8;
+    color: #fff;
+  }
