@@ -8,7 +8,7 @@ class alarm:
     def setalarm(alarmtime):
         pygame.init()
         pygame.mixer.init()
-        sound = pygame.mixer.Sound("sound1.mp3")
+        sound = pygame.mixer.Sound("sound2.mp3")
         snooze_time = 2
         while True:
             current_time = datetime.datetime.now().strftime("%H:%M")
