@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../css/table.css'
+import alarm from '../sounds/alarm.mp3';
+import useSound from 'use-sound';
+
 
 function Table(props) {
+  const [play] = useSound(alarm);
+  useEffect(() => {
+    if (props.status.toLowerCase() === 'ready') {
+      play()
+    }
+  }, [props.status]);
   return (
+    <>
     <table className="my-table">
       <thead>
         <tr>
@@ -23,6 +33,7 @@ function Table(props) {
         </tr>
       </tbody>
     </table>
+    </>
   );
 }
 

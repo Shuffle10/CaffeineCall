@@ -19,6 +19,7 @@ def get_data():
         print(received_data['content']['time'])
         if(received_data['content']['time']==getCurrentTime()):
             received_data['content']["status"] = "Brewing"
+            brew(received_data['content'])
         else:
             received_data['content']["status"] = "Timer Set"
         data = received_data
@@ -39,7 +40,12 @@ def get_update():
 @app.route('/cup', methods=['GET'])
 def cupInPlace():
     #logic to check cup in place using a sensor
-    return jsonify({"cupStatus":False})
+    return jsonify({"cupStatus":True})
+
+
+def brew(data):
+    print(data)
+    
      
 
 

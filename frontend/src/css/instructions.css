@@ -1,0 +1,14 @@
+.instruction-container{
+    width: 70%;
+    margin:50px auto;
+}
+
+
+.instruction-container h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.instruction-container section{
+    padding: 15px 0px;
+}

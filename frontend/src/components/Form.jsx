@@ -2,60 +2,49 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from './Table';
 import '../css/form.css';
-import alarm from '../sounds/alarm.mp3';
-import useSound from 'use-sound';
+import background from '../images/background.jpg'
 
 function Form() {
   const [coffeeValue, setCoffeeValue] = useState(50);
   const [creamerValue, setCreamerValue] = useState(50);
   const [timeInput, setTimeInput] = useState(getCurrentTime());
   const [status, setStatus] = useState('Idle');
-  const [cupInPlace, setCupInPlace] = useState(); // Initialize with false
-  const [errorMessage, setErrorMessage] = useState(); // Initialize with empty string
-  const [play] = useSound(alarm);
+  const [cupInPlace, setCupInPlace] = useState(); 
+  const [errorMessage, setErrorMessage] = useState(""); // Initialize with empty string
+ 
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await axios.get('http://localhost:5000/get_update');
+        const data = await axios.get('http://138.47.159.218:5000/get_update');
         setStatus(data.data);
-        console.log(data.data)
+        setErrorMessage("")
       } catch (error) {
-        console.log('Error:', error);
+        setErrorMessage("Could not connect to the machine");
       }
     };
 
     getData();
 
-    const intervalId = setInterval(getData, 5000);
+    const intervalId = setInterval(getData, 300);
 
     return () => clearInterval(intervalId);
   }, []); 
 
   const checkCup = async () => {
     try {
-      const cupData = await axios.get('http://localhost:5000/cup');
+      const cupData = await axios.get('http://138.47.159.218:5000/cup');
       return cupData.data.cupStatus;
     } catch (error) {
-      console.error('Error:', error);
-      return false; // Return false in case of error
+      return ""; 
     }
   };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const cup = await checkCup();
-  //     console.log(cup)
-  //     setCupInPlace(cup); // Update cupInPlace after async call
-  //   };
-  //   fetchData();
-  // }, []); // Run once on component mount
 
   useEffect(() => {
     if (cupInPlace === true) {
       let data = {
-        coffee: coffeeValue,
-        creamer: creamerValue,
+        coffee: coffeeValue/20,
+        creamer: creamerValue/20,
         time: timeInput,
         status: status,
         cupInPlace: cupInPlace,
@@ -75,11 +64,12 @@ function Form() {
 
   async function postData(content) {
     try {
-      const response = await axios.post('http://localhost:5000/brew', { content });
-      console.log(response.data.content);
+      const response = await axios.post('http://138.47.159.218:5000/brew', { content });
+      // console.log(response.data.content);
       setStatus(response.data.content.status);
     } catch (error) {
-      console.error('Error:', error);
+      setErrorMessage('Could not connect to the machine');
+      // console.error('Error:', error);
     }
   }
 
@@ -104,7 +94,9 @@ function Form() {
   return (
     <>
       <div className="container">
-        <div className="child-container image-container"></div>
+        <div className="child-container image-container">
+          <img className='bg-image' src={background} alt="logo"/>
+        </div>
         <div className="child-container form-container">
           {status === 'Idle' && (
             <form id="myForm">
@@ -150,7 +142,7 @@ function Form() {
                   required
                 />
               </div>
-              {errorMessage && <p className="error-message"> {errorMessage} </p>}
+              {errorMessage.length>0 && <p className="error-message"> {errorMessage} </p>}
               <button
                 className={`form-submit ${status === 'Brewing' ? 'disabled-button' : ''}`}
                 onClick={handleSubmit}
@@ -160,7 +152,7 @@ function Form() {
               </button>
             </form>
           )}
-          {status != 'Idle' && <Table coffee={coffeeValue} creamer={creamerValue} time={timeInput} status={status} />}
+          {status != 'Idle' && <Table coffee={coffeeValue} creamer={creamerValue} time={timeInput} status={status}/>}
         </div>
       </div>
     </>
