@@ -1,0 +1,50 @@
+.developers-page {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .page-heading {
+    text-align: center;
+    color: #333;
+    margin: 40px 0px;
+  }
+  
+  .profiles {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .profile {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+  }
+  
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+
+  
+  .profile h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .profile p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #666;
+  }
+
+  
+  

@@ -4,19 +4,23 @@ import Table from './Table';
 import '../css/form.css';
 import background from '../images/background.jpg'
 
+const IP_ADDRESS = 'http://138.47.153.247:5000'
+
 function Form() {
-  const [coffeeValue, setCoffeeValue] = useState(50);
-  const [creamerValue, setCreamerValue] = useState(50);
+  const [coffeeValue, setCoffeeValue] = useState(20);
+  const [creamerValue, setCreamerValue] = useState(55);
   const [timeInput, setTimeInput] = useState(getCurrentTime());
-  const [status, setStatus] = useState('Idle');
+  const [status, setStatus] = useState("Idle");
   const [cupInPlace, setCupInPlace] = useState(); 
   const [errorMessage, setErrorMessage] = useState(""); // Initialize with empty string
+  const [brewNow, setBrewNow] = useState(false);
+
  
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await axios.get('http://138.47.159.218:5000/get_update');
+        const data = await axios.get(`${IP_ADDRESS}/get_update`);
         setStatus(data.data);
         setErrorMessage("")
       } catch (error) {
@@ -26,14 +30,14 @@ function Form() {
 
     getData();
 
-    const intervalId = setInterval(getData, 300);
+    const intervalId = setInterval(getData, 3000);
 
     return () => clearInterval(intervalId);
   }, []); 
 
   const checkCup = async () => {
     try {
-      const cupData = await axios.get('http://138.47.159.218:5000/cup');
+      const cupData = await axios.get(`${IP_ADDRESS}/cup`);
       return cupData.data.cupStatus;
     } catch (error) {
       return ""; 
@@ -45,7 +49,7 @@ function Form() {
       let data = {
         coffee: coffeeValue/20,
         creamer: creamerValue/20,
-        time: timeInput,
+        time: !brewNow ? timeInput : "now",
         status: status,
         cupInPlace: cupInPlace,
       };
@@ -53,7 +57,10 @@ function Form() {
     } else if (cupInPlace==false) {
       setErrorMessage('Coffee Cup Not In Place!');
     }
-  }, [cupInPlace]); // Dependency array with all dependencies
+    else {
+      setErrorMessage("Could not connect top the machine")
+    }
+  }, [cupInPlace]);
 
   function getCurrentTime() {
     const now = new Date();
@@ -64,12 +71,10 @@ function Form() {
 
   async function postData(content) {
     try {
-      const response = await axios.post('http://138.47.159.218:5000/brew', { content });
-      // console.log(response.data.content);
+      const response = await axios.post(`${IP_ADDRESS}/brew`, { content });
       setStatus(response.data.content.status);
     } catch (error) {
       setErrorMessage('Could not connect to the machine');
-      // console.error('Error:', error);
     }
   }
 
@@ -89,6 +94,11 @@ function Form() {
     e.preventDefault();
     const cup = await checkCup(); // Wait for checkCup to resolve
     setCupInPlace(cup);
+  };
+
+  
+  const handleCheckboxChange = () => {
+    setBrewNow(!brewNow);
   };
 
   return (
@@ -131,7 +141,17 @@ function Form() {
                 <span>{creamerValue / 20} tbs</span>
               </div>
 
-              <div className="form-group">
+              <label>
+              <input
+                type="checkbox"
+                checked={brewNow}
+                onChange={handleCheckboxChange}
+                style={{marginRight : '10px'}}
+              />
+              Brew Now
+            </label>
+
+             {!brewNow && <div className="form-group">
                 <label htmlFor="timeInput">Time:</label>
                 <input
                   type="time"
@@ -141,14 +161,14 @@ function Form() {
                   onChange={handleTimeInput}
                   required
                 />
-              </div>
+              </div> }
               {errorMessage.length>0 && <p className="error-message"> {errorMessage} </p>}
               <button
-                className={`form-submit ${status === 'Brewing' ? 'disabled-button' : ''}`}
+                className={`form-submit`}
                 onClick={handleSubmit}
-                disabled={status === 'Brewing'}
+                disabled={errorMessage.length>0}
               >
-                {timeInput == getCurrentTime() ? 'Brew Now' : 'Set Time'}
+                Brew
               </button>
             </form>
           )}

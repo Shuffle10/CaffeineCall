@@ -18,7 +18,7 @@ function Instructions() {
         This indicates that the machine is ready for operation.</p></section>
         <section><h4>Select Coffee Amount and Creamer:</h4>
         <p>On the webpage, use the provided options to select the desired amount of coffee and creamer.
-        Adjust the sliders or input values according to your preferences.</p></section>
+        Adjust the sliders to input values according to your preferences.</p></section>
         <section><h4>Set Brew Time:</h4>
         <p>Use the time picker on the webpage to set the desired brewing time.
         If you set the time as the current time, a "Brew Now" button will appear.
@@ -30,11 +30,10 @@ function Instructions() {
         The machine will schedule the brew for the specified time.</p></section>
         <section><h4>Wait for Brew:</h4>
         <p>Allow the machine to brew the coffee according to the set parameters.
-        A timer or indicator on the webpage will show the progress.</p></section>
+        An indicator on the webpage will show the progress.</p></section>
         <section><h4>Alarm and Dispensing:</h4>
         <p>After brewing, an alarm will sound to indicate that the coffee is ready.
-        Grab your cup and head to the machine.
-        The machine will dispense the brewed coffee automatically.</p></section>
+        Grab your cup enjoy the fresh hot brew!</p></section>
 
     </div>
     

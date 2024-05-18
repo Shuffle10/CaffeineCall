@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import '../css/table.css'
-import alarm from '../sounds/alarm.mp3';
+import alarm2 from '../sounds/alarm2.mp3';
 import useSound from 'use-sound';
 
 
 function Table(props) {
-  const [play] = useSound(alarm);
+  const [play] = useSound(alarm2);
   useEffect(() => {
     if (props.status.toLowerCase() === 'ready') {
-      play()
+        play()
     }
   }, [props.status]);
   return (

@@ -6,13 +6,14 @@ function Navbar() {
   return (
     <>
     <nav className='navbar'>
-        <div className="nav-items logo-container">
+            <Link to='/'>
+            <div className="nav-items logo-container">
             <img src={logo} height={70} />
             CaffeineCall
-        </div>
+        </div></Link>
         <ul className="nav-list-items">
             <Link to='/instructions'><li className="nav-links">Instructions</li></Link>
-            <li className="nav-links">Developers</li>
+            <Link to='/developers'><li className="nav-links">Developers</li></Link>
         </ul>
     </nav>
     <Outlet/>
