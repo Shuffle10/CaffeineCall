@@ -17,9 +17,9 @@ Caffeine Call is a web-controlled smart coffee maker with an alarm system, desig
 
 ## Demo Video
 
-[![Watch the Video](https://img.youtube.com/vi/pFME7KdVcm0/0.jpg)](https://www.youtube.com/watch?v=pFME7KdVcm0)
+[![Caffeine Call](https://img.youtube.com/vi/pFME7KdVcm0/0.jpg)](https://www.youtube.com/watch?v=pFME7KdVcm0)
 
-Click the link above to watch the project
+Click the embedded image above to watch the project
 
 ---
 
