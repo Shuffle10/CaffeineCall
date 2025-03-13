@@ -2,7 +2,7 @@
 
 ### BrewTech - Raspberry Pi Final Project
 
-Caffeine Call is a web-controlled smart coffee maker with an alarm system, designed to brew coffee at a scheduled time with user-defined coffee and creamer amounts. This project was built using Flask, Raspberry Pi GPIO, and a touchscreen GUI. It automates the entire brewing process, from dispensing ingredients to notifying the user when the coffee is ready.
+Caffeine Call is a web-controlled smart coffee maker with an alarm system, designed to brew coffee at a scheduled time with user-defined coffee and creamer amounts. This project was built using React, Flask,and Raspberry Pi GPIO. It automates the entire brewing process, from dispensing ingredients to notifying the user when the coffee is ready.
 
 ---
 
